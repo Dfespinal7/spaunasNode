@@ -8,8 +8,12 @@ app.set('view engine','ejs')
 app.get('/prueba',(req,res)=>{
     res.send("hola mundo dev")
 })
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-let modelcita=require('./models/citas')
+let modelcita=require('./models/citas');
+
 
 app.get('/inicio',(req,res)=>{
     res.render('inicio')
@@ -93,7 +97,6 @@ app.post('/guardar_cita',async(req,res)=>{
         hora:req.body.hora,
         servicio:req.body.servicio,
         empleado:req.body.empleado,
-
     }
     
     let insercion=await modelcita.create(nuevacita);
