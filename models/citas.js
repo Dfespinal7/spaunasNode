@@ -5,7 +5,7 @@ const citas=new mongoose.Schema({
         require:[true,"obliga usuario"]
     },
     fecha:{
-        type:String,
+        type:Date,
         require:[true,"la fecha es obligatoria"]
     },
     lugar:{
