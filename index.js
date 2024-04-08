@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 let modelcita=require('./models/citas');
+let modelusuario=require('./models/usuarios')
 
 
 app.get('/inicio',(req,res)=>{
@@ -36,6 +37,15 @@ app.get('/listar_citas',async(req,res)=>{
     else
         res.status(404).json({error:"no se encontraron citas"})
 })
+app.get('/listar_usuario',async(req,res)=>{
+    let listarusurio=await modelusuario.find()
+    if(listarusurio)
+        res.render('usuarios/listar_usuario',{
+            "listarusuario":listarusurio
+        })
+    else
+        res.status(404).json({error:"no se encontraron usuarios"})
+})
 
 app.get('/login',(req,res)=>{
     res.render('usuarios/loguin')
@@ -45,8 +55,11 @@ app.get('/adminempleado',(req,res)=>{
     res.render('empleados/listar_empleado')
 })
 
-app.get('/form_citas',(req,res)=>{
-    res.render('citas/form_citas')
+app.get('/form_citas',async(req,res)=>{
+    let listarusario=await modelusuario.find()
+    res.render('citas/form_citas',{
+        "listarusuario":listarusario
+    })
 })
 
 app.get('/listar_servicio',(req,res)=>{
@@ -57,9 +70,7 @@ app.get('/form_servicio',(req,res)=>{
     res.render('servicios/form_servicio')
 })
 
-app.get('/listar_usuario',(req,res)=>{
-    res.render('usuarios/listar_usuario')
-})
+
 
 app.get('/form_usuario',(req,res)=>{
     res.render('usuarios/form_usuario')
@@ -104,6 +115,24 @@ app.post('/guardar_cita',async(req,res)=>{
         res.status(200).json({"mensaje":"cita guardada"})
     else
         res.status(400).json({"mensaje":"se presentó un error"})
+})
+
+app.post('/guardar_usuario',async(req,res)=>{
+    const nuevousuario={
+        nombre:req.body.nombre,
+        apellido:req.body.apellido,
+        contacto:req.body.contacto,
+        email:req.body.email,
+        username:req.body.username,
+        contra:req.body.contra,
+        rol:req.body.rol,
+    }
+    let insercion=await modelusuario.create(nuevousuario);
+    if(insercion)
+        res.status(200).json({"mensaje":"usuario creado correctamente"})
+    else
+        res.status(400).json({"mensaje":"se presento un error"})
+
 })
 
 app.listen(8080,()=>{

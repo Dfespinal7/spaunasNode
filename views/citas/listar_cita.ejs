@@ -25,12 +25,12 @@
 
         
         <tr>
-          <th><%=cita.usuario%></th>
-          <th><%=cita.fecha%></th>
-          <th><%=cita.lugar%></th>
-          <th><%=cita.hora%></th>
-          <th><%=cita.servicio%></th>
-          <th><%=cita.empleado%></th>
+          <td><%=cita.usuario%></td>
+          <td><%=cita.fecha%></td>
+          <td><%=cita.lugar%></td>
+          <td><%=cita.hora%></td>
+          <td><%=cita.servicio%></td>
+          <td><%=cita.empleado%></td>
             <td>
                 <a class="btn btn-warning" href="{% url 'editar_cita' i.idCita %}">Editar</a>
                 <a class="btn btn-danger" href="{% url 'eliminar_cita' i.idCita %}" onclick="return confirm('¿Estas seguro de eliminar?')" >Eliminar</a>

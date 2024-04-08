@@ -15,11 +15,12 @@
                     <label for="usuario" class="form-label">Usuario</label>
                     <input type="hidden" name="idCita" value="">
                     <select name="usuario" class="form-select">
+                        <%listarusuario.forEach(usuario=>{%>
+
                         
-                            <option value="carlos">carlos</option>
-                            <option value="daniel">daniel</option>
-                            <option value="daniel">santiago</option>
-   
+                            <option value="<%=usuario.nombre%>"><%=usuario.nombre%></option>
+                            
+                       <% })%>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -38,9 +39,9 @@
                     <label for="servicio" class="form-label">Servicio</label>
                     <select name="servicio" class="form-select"  required>
                        
-                            <option value="manicure">manicure</option>
-                            <option value="pedicure">pedicure</option>
-                            <option value="masaje">masaje</option>
+                            <option value="Manicure">manicure</option>
+                            <option value="Pedicure">pedicure</option>
+                            <option value="Masaje">masaje</option>
                         
                       </select>
                 </div>
@@ -48,9 +49,9 @@
                     <label for="empleado" class="form-label">Empleado</label>
                     <select name="empleado" class="form-select" required>
                         
-                        <option value="luna">luna</option>
-                        <option value="marcela">marcela</option>
-                        <option value="ana">ana</option>
+                        <option value="Luna">luna</option>
+                        <option value="Marcela">marcela</option>
+                        <option value="Ana">ana</option>
                         
                         
                         

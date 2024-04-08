@@ -15,7 +15,7 @@
     <table class="table w-75 mx-auto text-center">
         <thead>
             <tr>
-                <th>ID</th>
+                
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Contacto</th>
@@ -27,21 +27,18 @@
             </tr>
         </thead>
         <tbody>
-          
+          <% listarusuario.forEach(usuario=>{%>
             <tr>
-                <td>{{i.idUsuario}}</td>
-                <td>{{i.nombre}}</td>
-                <td>{{i.apellido}}</td>
-                <td>{{i.contacto}}</td>
-                <td>{{i.email}}</td>
-                <td>{{i.nombreUsuario}}</td>
-                <td>{{i.contrasena}}</td>
+                
+                <td><%=usuario.nombre%></td>
+                <td><%=usuario.apellido%></td>
+                <td><%=usuario.contacto%></td>
+                <td><%=usuario.email%></td>
+                <td><%=usuario.username%></td>
+                <td><%=usuario.contra%></td>
+                <td><%=usuario.rol%></td>
               
-                <td>Administrador</td>
                 
-                <td>Empleado</td>
-                
-                <td>Cliente</td>
                
                 <td></td>
                 <td>
@@ -49,6 +46,9 @@
                     <a class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar?')" href="{% url 'usuario_eliminar' i.idUsuario %}">Eliminar</a>
                 </td>
             </tr>
+
+          <%})%>
+            
             
         </tbody>
     </table>
