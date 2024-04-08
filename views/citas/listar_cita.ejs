@@ -1,0 +1,47 @@
+<%-include('../estatico/nav')%>
+<section class="container mt-3 mb-3 p-3" style="background-color: #ACB6F9; max-width: 1400px; border-radius: 0.3cm;">
+    <h1  class="text-center"> Listar cita</h1>
+      <a class="btn btn-dark rounded-pill text-white"href="/form_citas">Crear Cita</a>
+    
+      <form class="d-flex m-2" role="search" method="post" action="{% url 'buscar_cita' %}">
+       
+        <input class="form-control me-2" type="search" placeholder="Ingrese nombre de usuario" aria-label="Search" name="buscarcita">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+      </form>
+    
+      
+      <table class="table w-75 mx-auto text-center">
+        <tr>
+            
+            <th>usuario</th>
+            <th>Fecha</th>
+            <th>Lugar</th>
+            <th>Hora</th>
+            <th>Servicio</th>
+            <th>Empleado</th>
+            <th>Acción</th>
+        </tr>
+        <% listarcita.forEach(cita=>{%>
+
+        
+        <tr>
+          <th><%=cita.usuario%></th>
+          <th><%=cita.fecha%></th>
+          <th><%=cita.lugar%></th>
+          <th><%=cita.hora%></th>
+          <th><%=cita.servicio%></th>
+          <th><%=cita.empleado%></th>
+            <td>
+                <a class="btn btn-warning" href="{% url 'editar_cita' i.idCita %}">Editar</a>
+                <a class="btn btn-danger" href="{% url 'eliminar_cita' i.idCita %}" onclick="return confirm('¿Estas seguro de eliminar?')" >Eliminar</a>
+            </td>
+        </tr>
+      <%})%>
+        
+        
+      </table>
+                
+                            
+    
+                        
+    </section>
