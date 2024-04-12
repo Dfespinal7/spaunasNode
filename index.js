@@ -65,9 +65,11 @@ app.get('/adminempleado',async(req,res)=>{
 app.get('/form_citas',async(req,res)=>{
     let listarusario=await modelusuario.find()
     let listarempleado=await modelempleado.find()
+    let listarservicio=await modelservicio.find()
     res.render('citas/form_citas',{
         "listarusuario":listarusario,
-        "listarempleado":listarempleado
+        "listarempleado":listarempleado,
+        "listarservicio":listarservicio
     })
 })
 

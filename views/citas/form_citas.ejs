@@ -39,9 +39,12 @@
                     <label for="servicio" class="form-label">Servicio</label>
                     <select name="servicio" class="form-select"  required>
                        
-                            <option value="Manicure">manicure</option>
-                            <option value="Pedicure">pedicure</option>
-                            <option value="Masaje">masaje</option>
+                        <%listarservicio.forEach(servicio=>{%>
+
+                        
+                            <option value="<%=servicio.nombre%>"><%=servicio.nombre%></option>
+                            
+                       <% })%>
                         
                       </select>
                 </div>
