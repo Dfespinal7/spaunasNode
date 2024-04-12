@@ -16,6 +16,7 @@ let modelcita=require('./models/citas');
 let modelusuario=require('./models/usuarios')
 let modelempleado=require('./models/emeplados')
 let modelservicio=require('./models/servicios')
+let modelpagos=require('./models/pagos')
 
 
 app.get('/inicio',(req,res)=>{

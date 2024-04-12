@@ -6,24 +6,24 @@ const citas=new mongoose.Schema({
     },
     fecha:{
         type:Date,
-        require:[true,"la fecha es obligatoria"]
+        required:[true,"la fecha es obligatoria"]
     },
     lugar:{
         type:String,
-        require:[true,"el lugar  es obligatoria"]
+        required:[true,"el lugar  es obligatoria"]
 
     },
     hora:{
         type:String,
-        require:[true,"la hora obligatoria"]
+        required:[true,"la hora obligatoria"]
     },
     servicio:{
         type:String,
-        require:[true,"el servicio es obligatoria"]
+        required:[true,"el servicio es obligatoria"]
     },
     empleado:{
         type:String,
-        require:[true,"el empleado es obligatoria"]
+        required:[true,"el empleado es obligatoria"]
     }
 })
 const cita=mongoose.model("citas",citas)

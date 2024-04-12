@@ -16,20 +16,20 @@ const empleados= new mogoose.Schema({
     },
     email:{
         type:String,
-        require:[true,"el contacto del empleado es requerido"],
+        required:[true,"el contacto del empleado es requerido"],
         unique:[true,"el correo es unico"]
     },
     fechaNacimiento:{
         type:Date,
-        require:[true,"la fecha de nacimiento es requerida"],
+        required:[true,"la fecha de nacimiento es requerida"],
     },
     cargo:{
         type:String,
-        require:[true,"el cargo del empleado es requerido"]
+        required:[true,"el cargo del empleado es requerido"]
     },
     salario:{
         type:String,
-        require:[true,"el salario es requerido"]
+        required:[true,"el salario es requerido"]
     }
 })
  const empleado=mongoose.model("empleado",empleados)
