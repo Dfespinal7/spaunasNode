@@ -49,9 +49,12 @@
                     <label for="empleado" class="form-label">Empleado</label>
                     <select name="empleado" class="form-select" required>
                         
-                        <option value="Luna">luna</option>
-                        <option value="Marcela">marcela</option>
-                        <option value="Ana">ana</option>
+                        <%listarempleado.forEach(empleado=>{%>
+
+                        
+                            <option value="<%=empleado.nombre%>"><%=empleado.nombre%></option>
+                            
+                       <% })%>
                         
                         
                         

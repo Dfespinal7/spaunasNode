@@ -14,6 +14,8 @@ app.use(bodyParser.json());
 
 let modelcita=require('./models/citas');
 let modelusuario=require('./models/usuarios')
+let modelempleado=require('./models/emeplados')
+let modelservicio=require('./models/servicios')
 
 
 app.get('/inicio',(req,res)=>{
@@ -22,7 +24,8 @@ app.get('/inicio',(req,res)=>{
 app.get('/contacto',(req,res)=>{
     res.render('contactos/contacto')
 })
-app.get('/empleados',(req,res)=>{
+app.get('/empleados',async(req,res)=>{
+    
     res.render('empleados/empleados')
 })
 
@@ -51,19 +54,28 @@ app.get('/login',(req,res)=>{
     res.render('usuarios/loguin')
 })
 
-app.get('/adminempleado',(req,res)=>{
-    res.render('empleados/listar_empleado')
+app.get('/adminempleado',async(req,res)=>{
+    let listarempleado=await modelempleado.find()
+    res.render('empleados/listar_empleado',
+    {
+        "listarempleado":listarempleado
+    })
 })
 
 app.get('/form_citas',async(req,res)=>{
     let listarusario=await modelusuario.find()
+    let listarempleado=await modelempleado.find()
     res.render('citas/form_citas',{
-        "listarusuario":listarusario
+        "listarusuario":listarusario,
+        "listarempleado":listarempleado
     })
 })
 
-app.get('/listar_servicio',(req,res)=>{
-    res.render('servicios/listar_servicios')
+app.get('/listar_servicio',async(req,res)=>{
+    let listarservicio=await modelservicio.find()
+    res.render('servicios/listar_servicios',{
+        "listarservicio":listarservicio
+    })
 })
 
 app.get('/form_servicio',(req,res)=>{
@@ -133,6 +145,37 @@ app.post('/guardar_usuario',async(req,res)=>{
     else
         res.status(400).json({"mensaje":"se presento un error"})
 
+})
+app.post('/guardar_empleado',async(req,res)=>{
+    const nuevoempleado={
+        nombre:req.body.nombre,
+        apellido:req.body.apellido,
+        contacto:req.body.contacto,
+        email:req.body.email,
+        fechanacimiento:req.body.fechaNacimiento,
+        cargo:req.body.cargo,
+        salario:req.body.salario,
+
+    }
+    let insercion=await modelempleado.create(nuevoempleado)
+    if(insercion)
+        res.status(200).json({"mensaje":"empleado creado correctamente"})
+    else
+        res.status(400).json({"mensaje":"se presento un error"})
+})
+app.post('/guardar_servicio',async(req,res)=>{
+    const nuevoservicio={
+        nombre:req.body.nombre,
+        duracion:req.body.duracion,
+        descripcion:req.body.descripcion,
+        precio:req.body.precio,
+        disponibilidad:req.body.disponibilidad,
+    }
+    let insercion=await modelservicio.create(nuevoservicio)
+    if(insercion)
+        res.status(200).json({"mensaje":"servicio creado correctamente"})
+    else
+        res.status(400).json({"mensaje":"se presento un error"})
 })
 
 app.listen(8080,()=>{

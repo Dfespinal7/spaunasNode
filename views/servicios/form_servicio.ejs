@@ -10,32 +10,32 @@
                 <h2>Editar Formulario Servicio</h2>
             
 
-            <form action="{% url 'guardar_servicio' %}" method="post">
+            <form action="/guardar_servicio" method="post">
                
                 <input type="hidden" name="idServicio" value="{{id}}"><br>
 
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label><br>
-                    <input type="text" class="form-control" name="nombre" value="{{data.nombre}}" required><br>
+                    <input type="text" class="form-control" name="nombre" value="" required><br>
                 </div>
                 <div class="mb-3">
                     <label for="duracion" class="form-label">Duración</label><br>
-                    <input type="text" class="form-control" name="duracion" value="{{data.duracion}}" required><br>
+                    <input type="text" class="form-control" name="duracion" value="" required><br>
                 </div>
                 <div class="mb-3">
                     <label for="descripcion" class="form-label">Descripción</label><br>
-                    <input type="text" class="form-control" name="descripcion" value="{{data.descripcion}}" required><br>
+                    <input type="text" class="form-control" name="descripcion" value="" required><br>
                 </div>
                 <div class="mb-3">
                     <label for="precio" class="form-label">Precio</label><br>
-                    <input type="text" class="form-control" name="precio" value="{{data.precio}}" required><br>
+                    <input type="text" class="form-control" name="precio" value="" required><br>
                 </div>
                 <div class="mb-3">
                     <label for="disponibilidad" class="form-label">Disponibilidad</label><br>
-                    <input type="text" class="form-control" name="disponibilidad" value="{{data.disponibilidad}}" required><br>
+                    <input type="text" class="form-control" name="disponibilidad" value="" required><br>
                 </div>
                
-                    <button type="submit" class="btn btn-dark rounded-pill">Actualizar</button>
+                    
                 
                     <button type="submit" class="btn btn-dark rounded-pill">Crear</button>
                

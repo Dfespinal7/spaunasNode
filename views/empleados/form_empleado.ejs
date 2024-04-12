@@ -8,31 +8,29 @@
 <h2>editar empleado</h2>
 
       
-<form action="{% url 'guardar_empleado' %}" method="post">
+<form action="/guardar_empleado" method="post">
 
     
         <input type="hidden" name="idEmpleado" value="{{id}}">
     
     <label for="" class="form-label" >Nombre</label><br>
     
-    <input type="text" name="nombre" value="{{data.nombre}}" class="form-control" required><br>
+    <input type="text" name="nombre" value="" class="form-control" required><br>
     
     <label for="" class="form-label">Apellido</label><br>
-    <input type="text" name="apellido" value="{{data.apellido}}" class="form-control" required><br>
+    <input type="text" name="apellido" value="" id="nombre" class="form-control" required><br>
     <label for="" class="form-label">Contacto</label><br>
-    <input type="text" name="contacto" value="{{data.contacto}}" class="form-control" required><br>
+    <input type="text" name="contacto" value="" class="form-control" required><br>
     <label for="" class="form-label">Email</label><br>
-    <input type="text" name="email" value="{{data.email}}" class="form-control" required><br>
+    <input type="text" name="email" value="" class="form-control" required><br>
     <label for="" class="form-label">Fecha de nacimiento</label><br>
-    <input type="date" name="fechaNacimiento" value="{{data.fechaNacimiento|date:'Y-m-d'}}" class="form-control" required><br>
+    <input type="date" name="fechaNacimiento" value="" class="form-control" required><br>
     <label for="" class="form-label">Cargo</label><br>
-    <input type="text" name="cargo" value="{{data.cargo}}" class="form-control" required><br>
+    <input type="text" name="cargo" value="" class="form-control" required><br>
     <label for="" class="form-label">salario</label><br>
-    <input type="text" name="salario" value="{{data.salario}}" class="form-control" required><br>
+    <input type="text" name="salario" value="" class="form-control" required><br>
     
-    <div class="justify-content-center">
-    <button type="submit" class="d-flex justify-content-center">Actualizar</button>
-    </div>
+    
     
     <div class="d-flex justify-content-center">
     <button type="submit" class="btn btn-success">Crear</button>
