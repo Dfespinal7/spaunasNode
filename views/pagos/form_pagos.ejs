@@ -10,14 +10,19 @@
         <h1>Editar Pago</h1>
     
 
-    <form action="{% url 'guardar_pagos' %}" method="post">
+    <form action="/guardar_pago" method="post">
        
         <input type="hidden" value="{{id}}" name="idPago">
         <div class="mb-3">
             <label for="idUsuario" class="form-label">Usuario</label>
-            <select name="idUsuario" id="idUsuario" class="form-select">
-          
-                    <option value="{{ i.idUsuario }}" {% if data.usuarios.idUsuario == i.idUsuario %}selected{% endif %}>{{ i.nombre }}</option>
+            <select name="usuario" id="idUsuario" class="form-select">
+                <%listarusuario.forEach(usuario=>{%>
+
+                        
+                    <option value="<%=usuario.nombre%>"><%=usuario.nombre%></option>
+                    
+               <% })%>
+                             
                 
             </select>
         </div>
@@ -27,23 +32,29 @@
         </div>
         <div class="mb-3">
             <label for="monto" class="form-label">Monto</label>
-            <input type="text" class="form-control" name="monto" id="monto" value="{{data.monto}}" required>
+            <input type="text" class="form-control" name="monto" id="monto" value="" required>
         </div>
         <div class="mb-3">
             <label for="estadoPago" class="form-label">Estado de Pago</label>
-            <input type="text" class="form-control" name="estadoPago" id="estadoPago" value="{{data.estadoPago}}" required>
+            <input type="text" class="form-control" name="estadoPago" id="estadoPago" value="" required>
         </div>
         <div class="mb-3">
             <label for="servicio" class="form-label">Servicio</label>
             <select name="servicio" id="servicio" class="form-select">
                 
-                    <option value="{{ s.idServicio }}" {% if data.servicio.idServicio == s.idServicio %}selected{% endif %} required>{{ s.nombre }}</option>
+                <%listarservicio.forEach(servicio=>{%>
+
+                        
+                    <option value="<%=servicio.nombre%>"><%=servicio.nombre%></option>
+                    
+               <% })%>
+                
                
             </select>
         </div>
         <div class="d-flex justify-content-center">
             
-                <button type="submit" class="btn btn-dark rounded-pill">Actualizar</button>
+                
            
                 <button type="submit" class="btn btn-dark rounded-pill">Crear</button>
             

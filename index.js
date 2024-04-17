@@ -91,11 +91,19 @@ app.get('/form_usuario',(req,res)=>{
     res.render('usuarios/form_usuario')
 })
 
-app.get('/listar_pagos',(req,res)=>{
-    res.render('pagos/listar_pagos')
+app.get('/listar_pagos',async(req,res)=>{
+    let listarPago=await modelpagos.find()
+    res.render('pagos/listar_pagos',{
+        "listarpago":listarPago
+    })
 })
-app.get('/form_pagos',(req,res)=>{
-    res.render('pagos/form_pagos')
+app.get('/form_pagos',async(req,res)=>{
+    let listarusuario=await modelusuario.find()
+    let listarservicio=await modelservicio.find()
+    res.render('pagos/form_pagos',{
+        "listarusuario":listarusuario,
+        "listarservicio":listarservicio
+    })
 })
 
 app.get('/form_empleado',(req,res)=>{
@@ -177,6 +185,22 @@ app.post('/guardar_servicio',async(req,res)=>{
     let insercion=await modelservicio.create(nuevoservicio)
     if(insercion)
         res.status(200).json({"mensaje":"servicio creado correctamente"})
+    else
+        res.status(400).json({"mensaje":"se presento un error"})
+})
+
+app.post('/guardar_pago',async(req,res)=>{
+    const nuevopago={
+        usuario:req.body.usuario,
+        fechaPago:req.body.fechaPago,
+        monto:req.body.monto,
+        estadoPago:req.body.estadoPago,
+        servicio:req.body.servicio,
+
+    }
+    let insercion=await modelpagos.create(nuevopago)
+    if(insercion)
+        res.status(200).json({"mensaje":"pago creado correctamente"})
     else
         res.status(400).json({"mensaje":"se presento un error"})
 })

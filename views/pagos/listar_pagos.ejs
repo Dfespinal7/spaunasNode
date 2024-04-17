@@ -15,7 +15,7 @@
   <table class="table w-75 mx-auto text-center">
     <thead>
         <tr>
-            <th>ID</th>
+            
             <th>Usuario</th>
             <th>Fecha de pago</th>
             <th>Monto</th>
@@ -25,19 +25,22 @@
         </tr>
     </thead>
     <tbody>
-      
+      <%listarpago.forEach(pago=>{%>
+
+     
         <tr>
-            <td>{{i.idPago}}</td>
-            <td>{{i.idUsuario}}</td>
-            <td>{{i.fechaPago}}</td>
-            <td>{{i.monto}}</td>
-            <td>{{i.estadoPago}}</td>
-            <td>{{i.servicio}}</td>
+            <td><%=pago.usuario%></td>
+            <td><%=pago.fechaPago%></td>
+            <td><%=pago.monto%></td>
+            <td><%=pago.estadoPago%></td>
+            <td><%=pago.servicio%></td>
+            
             <td>
                 <a class="btn btn-warning" href="{% url 'editar_pagos' i.idPago %}" class="text-white">Editar</a>
                 <a class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar?')" href="{% url 'eliminar_pagos' i.idPago %}" class="text-white">Eliminar</a>
             </td>
         </tr>
+        <%})%>
         
     </tbody>
   </table>
